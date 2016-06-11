@@ -25,6 +25,7 @@ extern crate collections as core_collections;
 extern crate rand;
 extern crate alloc;
 extern crate rustc_unicode;
+extern crate libc;
 
 extern crate alloc_system;
 
