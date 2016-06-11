@@ -9,6 +9,7 @@
 #![feature(rand)]
 #![feature(raw)]
 #![feature(slice_concat_ext)]
+#![feature(start)]
 #![feature(unicode)]
 #![feature(unwind_attributes)]
 #![no_std]
@@ -61,8 +62,8 @@ pub use rustc_unicode::char;
 
 #[macro_use]
 pub mod macros;
-
 pub mod panicking;
+pub mod rt;
 
 #[prelude_import]
 pub mod prelude;
