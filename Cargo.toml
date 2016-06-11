@@ -1,0 +1,11 @@
+[package]
+name = "ctr-std"
+version = "0.1.0"
+authors = ["Fenrir <fenrirwolf@gmail.com>"]
+
+[lib]
+name = "std"
+
+[dependencies]
+alloc_system3ds = { git = "https://github.com/Furyhunter/alloc_system3ds" }
+ctr-libc = { path = "../ctr-libc" }
