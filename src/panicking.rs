@@ -28,11 +28,11 @@
 //! one function. Currently, the actual symbol is declared in the standard
 //! library, but the location of this may change over time.
 
-#![allow(dead_code, missing_docs)]
-
+#![allow(unused, dead_code, missing_docs)]
 use fmt;
 
-#[cold] #[inline(never)] // this is the slow path, always
+#[cold]
+#[inline(never)] // this is the slow path, always
 pub fn panic(expr_file_line: &(&'static str, &'static str, u32)) -> ! {
     // Use Arguments::new_v1 instead of format_args!("{}", expr) to potentially
     // reduce size overhead. The format_args! macro uses str's Display trait to
@@ -44,21 +44,18 @@ pub fn panic(expr_file_line: &(&'static str, &'static str, u32)) -> ! {
     panic_fmt(fmt::Arguments::new_v1(&[expr], &[]), &(file, line))
 }
 
-#[cold] #[inline(never)]
-fn panic_bounds_check(file_line: &(&'static str, u32),
-                     index: usize, len: usize) -> ! {
+#[cold]
+#[inline(never)]
+fn panic_bounds_check(file_line: &(&'static str, u32), index: usize, len: usize) -> ! {
     panic_fmt(format_args!("index out of bounds: the len is {} but the index is {}",
-                           len, index), file_line)
+                           len,
+                           index),
+              file_line)
 }
 
-#[cold] #[inline(never)]
-pub fn panic_fmt(fmt: fmt::Arguments, file_line: &(&'static str, u32)) -> ! {
-    #[allow(improper_ctypes)]
-    extern {
-        #[lang = "panic_fmt"]
-        #[unwind]
-        fn panic_impl(fmt: fmt::Arguments, file: &'static str, line: u32) -> !;
-    }
-    let (file, line) = *file_line;
-    unsafe { panic_impl(fmt, file, line) }
+#[lang = "eh_personality"]
+extern "C" fn eh_personality() {}
+#[lang = "panic_fmt"]
+fn panic_fmt(fmt: fmt::Arguments, file_line: &(&'static str, u32)) -> ! {
+    loop {}
 }
