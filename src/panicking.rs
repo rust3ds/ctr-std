@@ -53,9 +53,12 @@ fn panic_bounds_check(file_line: &(&'static str, u32), index: usize, len: usize)
               file_line)
 }
 
-#[lang = "eh_personality"]
-extern "C" fn eh_personality() {}
+#[cold]
+#[inline(never)]
 #[lang = "panic_fmt"]
 fn panic_fmt(fmt: fmt::Arguments, file_line: &(&'static str, u32)) -> ! {
     loop {}
 }
+
+#[lang = "eh_personality"]
+extern "C" fn eh_personality() {}
