@@ -6,6 +6,7 @@
 #![feature(dropck_parametricity)]
 #![feature(fmt_internals)]
 #![feature(filling_drop)]
+#![feature(float_extras)]
 #![feature(heap_api)]
 #![feature(lang_items)]
 #![feature(macro_reexport)]
@@ -15,11 +16,14 @@
 #![feature(raw)]
 #![feature(slice_concat_ext)]
 #![feature(start)]
+#![feature(stmt_expr_attributes)]
+#![feature(try_from)]
 #![feature(type_ascription)]
 #![feature(unicode)]
 #![feature(unique)]
 #![feature(unsafe_no_drop_flag)]
 #![feature(unwind_attributes)]
+#![feature(zero_one)]
 #![no_std]
 
 #[macro_reexport(assert, assert_eq, debug_assert, debug_assert_eq,
@@ -73,6 +77,23 @@ pub mod macros;
 
 #[prelude_import]
 pub mod prelude;
+
+pub use core::isize;
+pub use core::i8;
+pub use core::i16;
+pub use core::i32;
+pub use core::i64;
+
+pub use core::usize;
+pub use core::u8;
+pub use core::u16;
+pub use core::u32;
+pub use core::u64;
+
+#[path = "num/f32.rs"] pub mod f32;
+#[path = "num/f64.rs"] pub mod f64;
+
+pub mod num;
 
 pub mod collections;
 
