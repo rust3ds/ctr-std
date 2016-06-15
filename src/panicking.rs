@@ -46,7 +46,7 @@ pub fn panic(expr_file_line: &(&'static str, &'static str, u32)) -> ! {
 
 #[cold]
 #[inline(never)]
-fn panic_bounds_check(file_line: &(&'static str, u32), index: usize, len: usize) -> ! {
+pub fn panic_bounds_check(file_line: &(&'static str, u32), index: usize, len: usize) -> ! {
     panic_fmt(format_args!("index out of bounds: the len is {} but the index is {}",
                            len,
                            index),
@@ -56,7 +56,7 @@ fn panic_bounds_check(file_line: &(&'static str, u32), index: usize, len: usize)
 #[cold]
 #[inline(never)]
 #[lang = "panic_fmt"]
-fn panic_fmt(fmt: fmt::Arguments, file_line: &(&'static str, u32)) -> ! {
+pub fn panic_fmt(fmt: fmt::Arguments, file_line: &(&'static str, u32)) -> ! {
     loop {}
 }
 

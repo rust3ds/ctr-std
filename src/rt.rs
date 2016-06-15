@@ -1,5 +1,3 @@
-//This is so hacky... I can't wait for it to blow up in my face somehow.
-
 use core::mem;
 
 #[lang = "start"]

@@ -1,16 +1,24 @@
 #![feature(alloc)]
 #![feature(allow_internal_unstable)]
 #![feature(collections)]
+#![feature(collections_bound)]
 #![feature(core_intrinsics)]
+#![feature(dropck_parametricity)]
 #![feature(fmt_internals)]
+#![feature(filling_drop)]
+#![feature(heap_api)]
 #![feature(lang_items)]
 #![feature(macro_reexport)]
+#![feature(oom)]
 #![feature(prelude_import)]
 #![feature(rand)]
 #![feature(raw)]
 #![feature(slice_concat_ext)]
 #![feature(start)]
+#![feature(type_ascription)]
 #![feature(unicode)]
+#![feature(unique)]
+#![feature(unsafe_no_drop_flag)]
 #![feature(unwind_attributes)]
 #![no_std]
 
@@ -62,8 +70,11 @@ pub use rustc_unicode::char;
 
 #[macro_use]
 pub mod macros;
-pub mod panicking;
-pub mod rt;
 
 #[prelude_import]
 pub mod prelude;
+
+pub mod collections;
+
+pub mod panicking;
+pub mod rt;
