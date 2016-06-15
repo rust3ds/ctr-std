@@ -93,6 +93,8 @@ pub use core::u64;
 #[path = "num/f32.rs"] pub mod f32;
 #[path = "num/f64.rs"] pub mod f64;
 
+pub mod ascii;
+
 pub mod num;
 
 pub mod collections;
