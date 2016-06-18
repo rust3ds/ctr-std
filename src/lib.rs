@@ -103,6 +103,7 @@ pub mod num;
 
 pub mod collections;
 pub mod ffi;
+mod memchr;
 
 #[macro_use]
 #[path = "sys/common/mod.rs"] mod sys_common;
