@@ -8,12 +8,14 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-//! Utilities related to FFI bindings.
+//! The I/O Prelude
+//!
+//! The purpose of this module is to alleviate imports of many common I/O traits
+//! by adding a glob import to the top of I/O heavy modules:
+//!
+//! ```
+//! # #![allow(unused_imports)]
+//! use std::io::prelude::*;
+//! ```
 
-pub use self::c_str::{CString, CStr, NulError, IntoStringError};
-pub use self::c_str::{FromBytesWithNulError};
-
-pub use self::os_str::{OsString, OsStr};
-
-mod c_str;
-mod os_str;
+pub use super::{Read, Write, BufRead, Seek};

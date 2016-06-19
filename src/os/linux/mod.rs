@@ -8,12 +8,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-//! Utilities related to FFI bindings.
+//! Linux-specific definitions
 
-pub use self::c_str::{CString, CStr, NulError, IntoStringError};
-pub use self::c_str::{FromBytesWithNulError};
-
-pub use self::os_str::{OsString, OsStr};
-
-mod c_str;
-mod os_str;
+pub mod raw;
+pub mod fs;

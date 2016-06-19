@@ -2,6 +2,7 @@
 #![feature(allow_internal_unstable)]
 #![feature(collections)]
 #![feature(collections_bound)]
+#![feature(const_fn)]
 #![feature(core_intrinsics)]
 #![feature(dropck_parametricity)]
 #![feature(fmt_internals)]
@@ -25,6 +26,7 @@
 #![feature(unique)]
 #![feature(unsafe_no_drop_flag)]
 #![feature(unwind_attributes)]
+#![feature(question_mark)]
 #![feature(zero_one)]
 #![no_std]
 
@@ -103,10 +105,18 @@ pub mod num;
 
 pub mod collections;
 pub mod ffi;
+pub mod fs;
+pub mod io;
+pub mod os;
+pub mod path;
+pub mod sync;
+pub mod time;
 mod memchr;
 
 #[macro_use]
 #[path = "sys/common/mod.rs"] mod sys_common;
+
+#[path = "sys/unix/mod.rs"] mod sys;
 
 pub mod panicking;
 pub mod rt;

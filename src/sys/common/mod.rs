@@ -1,6 +1,13 @@
+pub mod io;
+
 /// A trait for viewing representations from std types
 pub trait AsInner<Inner: ?Sized> {
     fn as_inner(&self) -> &Inner;
+}
+
+/// A trait for viewing representations from std types
+pub trait AsInnerMut<Inner: ?Sized> {
+    fn as_inner_mut(&mut self) -> &mut Inner;
 }
 
 /// A trait for extracting representations from std types

@@ -1,4 +1,4 @@
-// Copyright 2015 The Rust Project Developers. See the COPYRIGHT
+// Copyright 2012-2015 The Rust Project Developers. See the COPYRIGHT
 // file at the top-level directory of this distribution and at
 // http://rust-lang.org/COPYRIGHT.
 //
@@ -8,12 +8,15 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-//! Utilities related to FFI bindings.
+//! OS-specific functionality.
 
-pub use self::c_str::{CString, CStr, NulError, IntoStringError};
-pub use self::c_str::{FromBytesWithNulError};
+#![allow(missing_docs, bad_style)]
 
-pub use self::os_str::{OsString, OsStr};
+#[cfg(unix)]
+pub use sys::ext as unix;
+#[cfg(windows)]
+pub use sys::ext as windows;
 
-mod c_str;
-mod os_str;
+#[cfg(target_os = "linux")]     pub mod linux;
+
+pub mod raw;

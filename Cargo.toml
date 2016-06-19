@@ -8,4 +8,4 @@ name = "std"
 
 [dependencies]
 alloc_system3ds = { git = "https://github.com/Furyhunter/alloc_system3ds" }
-ctr-libc = { git = "https://github.com/FenrirWolf/ctr-libc" }
+ctr-libc = { git = "https://github.com/FenrirWolf/ctr-libc", rev = "85bdd0b" }
