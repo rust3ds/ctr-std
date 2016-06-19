@@ -51,10 +51,10 @@ pub fn errno() -> i32 {
                                   target_os = "freebsd"),
                               link_name = "__error")]
     extern "C" {
-        fn errno_location() -> *const c_int;
+        fn __errno() -> *const c_int;
     }
 
-    unsafe { (*errno_location()) as i32 }
+    unsafe { (*__errno()) as i32 }
 }
 
 /// Gets a detailed string description for the given error number.
@@ -79,6 +79,5 @@ pub fn error_string(errno: i32) -> String {
 }
 
 pub fn exit(code: i32) -> ! {
-        unsafe { libc::exit(code as c_int) }
+    unsafe { libc::exit(code as c_int) }
 }
-
