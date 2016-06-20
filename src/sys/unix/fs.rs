@@ -463,17 +463,6 @@ impl File {
         cvt_r(|| unsafe { os_datasync(self.0.raw()) })?;
         return Ok(());
 
-        #[cfg(any(target_os = "macos", target_os = "ios"))]
-        unsafe fn os_datasync(fd: c_int) -> c_int {
-            libc::fcntl(fd, libc::F_FULLFSYNC)
-        }
-        #[cfg(target_os = "linux")]
-        unsafe fn os_datasync(fd: c_int) -> c_int {
-            libc::fdatasync(fd)
-        }
-        #[cfg(not(any(target_os = "macos",
-                      target_os = "ios",
-                      target_os = "linux")))]
         unsafe fn os_datasync(fd: c_int) -> c_int {
             libc::fsync(fd)
         }
