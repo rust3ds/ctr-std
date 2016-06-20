@@ -24,8 +24,9 @@ use sys::time::SystemTime;
 use sys::{cvt, cvt_r};
 use sys_common::{AsInner, FromInner};
 
-use libc::{stat as stat64, fstat as fstat64, lstat as lstat64, off_t as off64_t, ftruncate64,
-           lseek as lseek64, dirent as dirent64, readdir_r as readdir64_r, open as open64};
+use libc::{stat as stat64, fstat as fstat64, lstat as lstat64, off_t as off64_t,
+           ftruncate as ftruncate64, lseek as lseek64, dirent as dirent64,
+           readdir_r as readdir64_r, open as open64};
 
 pub struct File(FileDesc);
 
