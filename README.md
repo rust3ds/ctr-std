@@ -1,3 +1,7 @@
+# Deprecated
+This repository has been deprecated in favour of the new changes present within the latest nightly versions of the official Rust toolchain. For more information about the new tools and libraries, check [ctru-rs](https://github.com/rust3ds/ctru-rs).
+
+# Description
 A proof-of-concept implementation of (parts of) the Rust Standard Library for Nintendo 3DS homebrew. Highly experimental and not recommended for general use.
 
 Issues:
